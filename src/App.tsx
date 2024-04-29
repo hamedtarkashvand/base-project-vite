@@ -9,5 +9,4 @@ function App() {
   } className="text-red-500">counter : </h1>
 }
 
-
 export default App
