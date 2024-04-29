@@ -7,7 +7,7 @@ function App() {
 
   return (
     <h1 onClick={() => setCount(1 + count)} className="text-red-500">
-      counter :{' '}
+      counter :{count}
     </h1>
   )
 }
