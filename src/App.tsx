@@ -8,5 +8,4 @@ function App() {
   return <h1 onClick={()=>console.log('ds')
   } className="text-red-500">counter : </h1>
 }
-
 export default App
