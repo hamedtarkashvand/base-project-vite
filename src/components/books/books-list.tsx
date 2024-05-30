@@ -12,7 +12,7 @@ import { useLocation } from 'react-router-dom';
  function BooksList() {
  
   const [data, setData] = useState<IbookItem[]>([])
-  const {state} = useLocation()git 
+  const {state} = useLocation()
   useEffect(() => {
 
     if(state) console.log(state)
