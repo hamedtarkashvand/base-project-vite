@@ -114,7 +114,24 @@ function App() {
       helperText="این متن کمکی برای وارد کردن نام است"
       startIcon={AccountCircle}
       endIcon={AccountCircle}
-      required
+      //required
+      />
+
+      <Input id='home'
+      errors={errors} 
+      placeholder='محل وارد کردن نام'
+      register={register}
+      registerOptions={{
+        maxLength:{
+          value:5,
+          message:'بیشتر 5 وارد نکنید'
+        }
+      }}
+      dirtyFields={Boolean(dirtyFields['home'])}
+      helperText="ادرس وارد کنید"
+      startIcon={AccountCircle}
+      endIcon={AccountCircle}
+      //required
       />
    
     </div>

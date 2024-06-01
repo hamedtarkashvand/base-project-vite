@@ -77,11 +77,9 @@ const HandelEndIcon: React.FC<PropsHandelEndIcon> = ({
   required,
 }):JSX.Element | undefined | null => {
 
-
-  // if((!registerOptions || !required) && EndIcon) return ()
   
   if(registerOptions || required) {
-    if (!dirtyFields && !errors || EndIcon) {
+    if (!dirtyFields && !errors) {
       return EndIcon ? <EndIcon  /> : null
     } else if (errors) {
       return <ErrorOutlineIcon color="error" />
@@ -89,8 +87,6 @@ const HandelEndIcon: React.FC<PropsHandelEndIcon> = ({
       return <CheckCircleIcon color="success" />
     }
   }
-
-console.log(registerOptions , required );
 
   return EndIcon && <EndIcon  />
 }
