@@ -16,10 +16,9 @@ const Content = styled.div`
   border-radius: 6px;
   padding: 28px;
   height: 100%;
-
+`
 function App() {
-  const [count, setCount] = useState(0)
-
+ 
   return (
     <>
       <AppContainer>
