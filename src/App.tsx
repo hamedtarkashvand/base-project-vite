@@ -17,9 +17,9 @@ const Content = styled.div`
   padding: 28px;
   height: 100%;
 
-  transition: height 6s ease-in-out;
-` 
 function App() {
+  const [count, setCount] = useState(0)
+
   return (
     <>
       <AppContainer>
