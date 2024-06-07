@@ -3,45 +3,30 @@ import rtlPlugin from 'stylis-plugin-rtl'
 import {prefixer} from 'stylis'
 import createCache from '@emotion/cache'
 
-import {createTheme, ThemeProvider} from '@mui/material/styles'
+import {ThemeProvider as MuiThemProvider} from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import {theme} from './theme'
 
-const theme = createTheme({
-  direction: 'rtl',
-  palette: {
-    primary: {
-      main: '#2563EB',
-    },
-    secondary: {
-      main: '#4F46E5 ',
-    },
-    info: {
-      main: '#0284C7',
-    },
-    success: {
-      main: '#16A34A',
-    },
-    error: {
-      main: '#DC2626',
-    },
-    warning: {
-      main: '#F59E0B',
-    },
-  },
-})
+type TypeThemeProvider = {
+  children: React.ReactNode
+}
 
 const cacheRtl = createCache({
   key: 'muirtl',
   stylisPlugins: [prefixer, rtlPlugin],
 })
 
-function Rtl(props: any) {
+function ThemeProvider(props: TypeThemeProvider) {
   return (
     <>
       <CacheProvider value={cacheRtl}>
-        <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+        <MuiThemProvider theme={theme}>
+          <CssBaseline />
+          {props.children}
+        </MuiThemProvider>
       </CacheProvider>
     </>
   )
 }
 
-export default Rtl
+export default ThemeProvider

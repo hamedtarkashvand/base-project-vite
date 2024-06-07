@@ -1,7 +1,9 @@
 import {createTheme} from '@mui/material/styles'
+import IranSans from '../assets/fonts/IRANSans.woff'
+import IranSans2 from '../assets/fonts/IRANSans.woff2'
 
 export const theme = createTheme({
-  direction:'rtl',
+  direction: 'rtl',
   palette: {
     primary: {
       main: '#2563EB',
@@ -19,10 +21,26 @@ export const theme = createTheme({
       main: '#DC2626',
     },
     warning: {
-      main:'#F59E0B'
+      main: '#F59E0B',
     },
-   
-    
   },
-  
+  typography: {
+    allVariants: {
+      fontFamily: 'IRANSans',
+    },
+    fontFamily: 'IRANSans',
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        @font-face {
+          font-family:'IRANSans';
+          src: url(${IranSans}) format('woff'),
+          url(${IranSans2}) format('woff2');
+          font-weight: normal;
+          font-style: normal;
+        }
+     `,
+    },
+  },
 })

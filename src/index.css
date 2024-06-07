@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* @font-face {
+  font-family: 'IRANSans';
+  src: url('./assets/fonts/IRANSans.woff2') format('woff2'),
+      url('./assets/fonts/IRANSans.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+} */
+
+/* @font-face {
+  font-family: 'iranSans';
+  src: url(./assets/fonts/FontsFree-Net-ir_sans.ttf) format("truetype")
+}
+ */

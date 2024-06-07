@@ -1,18 +1,9 @@
 import type {FC, HTMLInputTypeAttribute} from 'react'
-import {styled} from '@mui/system'
 
-import {
-  IconButton,
-  InputAdornment,
-  PaletteOptions,
-  SvgIconTypeMap,
-  TextFieldPropsColorOverrides,
-} from '@mui/material'
+import {InputAdornment, SvgIconTypeMap} from '@mui/material'
 
-import TextField, {TextFieldProps} from '@mui/material/TextField'
-import {AccountCircle, BorderColor} from '@mui/icons-material'
+import TextField from '@mui/material/TextField'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
-import CancelIcon from '@mui/icons-material/Cancel'
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 import {
   FieldErrors,
@@ -20,54 +11,54 @@ import {
   RegisterOptions,
   UseFormRegister,
 } from 'react-hook-form'
-import { OverridableComponent } from '@mui/material/OverridableComponent'
+import {OverridableComponent} from '@mui/material/OverridableComponent'
 
 interface inputProps {
-  id: string;
-  register:  UseFormRegister<FieldValues>;
-  registerOptions?: RegisterOptions ;
-  className?: string;
-  errors: FieldErrors;
-  dirtyFields: boolean;
-  required?: boolean;
-  helperText?: string;
-  placeholder?: string;
-  type?: HTMLInputTypeAttribute;
-  startIcon?: OverridableComponent<SvgIconTypeMap<{}, "svg">> 
-  endIcon?: OverridableComponent<SvgIconTypeMap<{}, "svg">> 
+  id: string
+  register: UseFormRegister<FieldValues>
+  registerOptions?: RegisterOptions
+  className?: string
+  errors: FieldErrors
+  dirtyFields: boolean
+  required?: boolean
+  helperText?: string
+  placeholder?: string
+  type?: HTMLInputTypeAttribute
+  startIcon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>
+  endIcon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>
 }
 type PropsHandelEndIcon = {
-  dirtyFields: boolean;
-  errors: boolean;
-  endIcon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>;
-  registerOptions?: RegisterOptions;
-  required?: boolean;
-};
+  dirtyFields: boolean
+  errors: boolean
+  endIcon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>
+  registerOptions?: RegisterOptions
+  required?: boolean
+}
 
-const InputStyle = styled(TextField)<TextFieldProps>(({theme}) => {
-  const {primary, success, error} = theme.palette
+// const InputStyle = styled(TextField)<TextFieldProps>(({theme}) => {
+//   const {primary, success, error} = theme.palette
 
-  return {
-    // Root class for the input field
+//   return {
+//     // Root class for the input field
 
-    '& .MuiOutlinedInput-root': {
-      // Class for the border around the input field
-      '& .MuiOutlinedInput-notchedOutline': {
-        borderWidth: '1px',
-      },
-      '&.Mui-focused': {
-        '& .MuiOutlinedInput-notchedOutline': {
-          borderWidth: '2px',
-        },
-      },
-      '&:hover:not(.Mui-focused)': {
-        '& .MuiOutlinedInput-notchedOutline': {
-          borderColor: '#0000003b',
-        },
-      },
-    },
-  }
-}) as typeof TextField
+//     '& .MuiOutlinedInput-root': {
+//       // Class for the border around the input field
+//       '& .MuiOutlinedInput-notchedOutline': {
+//         borderWidth: '1px',
+//       },
+//       '&.Mui-focused': {
+//         '& .MuiOutlinedInput-notchedOutline': {
+//           borderWidth: '2px',
+//         },
+//       },
+//       '&:hover:not(.Mui-focused)': {
+//         '& .MuiOutlinedInput-notchedOutline': {
+//           borderColor: '#0000003b',
+//         },
+//       },
+//     },
+//   }
+// }) as typeof TextField
 
 const HandelEndIcon: React.FC<PropsHandelEndIcon> = ({
   dirtyFields,
@@ -75,12 +66,10 @@ const HandelEndIcon: React.FC<PropsHandelEndIcon> = ({
   endIcon: EndIcon,
   registerOptions,
   required,
-}):JSX.Element | undefined | null => {
-
-  
-  if(registerOptions || required) {
+}): JSX.Element | undefined | null => {
+  if (registerOptions || required) {
     if (!dirtyFields && !errors) {
-      return EndIcon ? <EndIcon  /> : null
+      return EndIcon ? <EndIcon /> : null
     } else if (errors) {
       return <ErrorOutlineIcon color="error" />
     } else {
@@ -88,7 +77,7 @@ const HandelEndIcon: React.FC<PropsHandelEndIcon> = ({
     }
   }
 
-  return EndIcon && <EndIcon  />
+  return EndIcon && <EndIcon />
 }
 
 const Input: FC<inputProps> = ({
@@ -97,13 +86,13 @@ const Input: FC<inputProps> = ({
   registerOptions,
   className,
   required,
-  errors ,
+  errors,
   dirtyFields,
   helperText,
   type,
   placeholder,
-  startIcon : StartIcon,
-  endIcon 
+  startIcon: StartIcon,
+  endIcon,
 }) => {
   return (
     <TextField
@@ -116,9 +105,8 @@ const Input: FC<inputProps> = ({
       label={'نام'}
       {...register(id, {
         required,
-        ...registerOptions
+        ...registerOptions,
       })}
-
       InputProps={{
         startAdornment: StartIcon && (
           <InputAdornment position="start" disablePointerEvents={true}>
@@ -126,7 +114,7 @@ const Input: FC<inputProps> = ({
           </InputAdornment>
         ),
 
-        endAdornment:(
+        endAdornment: (
           <HandelEndIcon
             dirtyFields={dirtyFields}
             errors={!!errors[id]}
@@ -144,7 +132,7 @@ const Input: FC<inputProps> = ({
       }}
       error={Boolean(errors[id])}
       placeholder={placeholder}
-      helperText={errors[id] ? errors[id].message as string : helperText}
+      helperText={errors[id] ? (errors[id]?.message as string) : helperText}
     />
   )
 }
